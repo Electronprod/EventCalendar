@@ -31,4 +31,7 @@ public class DateEvent {
 	public String getName() {
 		return name;
 	}
+	public String getDate() {
+		return date;
+	}
 }

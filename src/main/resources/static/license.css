@@ -1,0 +1,56 @@
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		h1 {
+			margin-bottom: 20px;
+		}
+
+		.license {
+			border: 1px solid #ccc;
+			background-color: #fff;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 20px;
+			padding: 20px;
+			max-width: 600px;
+			width: 100%;
+		}
+
+		.license h2 {
+			margin-top: 0;
+		}
+
+		.license p {
+			margin-top: 5px;
+		}
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		.title {
+			flex-grow: 1;
+			text-align: center;
+		}
+
+		.license-link {
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+		}
+
+		.logo {
+			max-width: 100px;
+		}
