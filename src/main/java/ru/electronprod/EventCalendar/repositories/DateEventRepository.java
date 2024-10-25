@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DateEventRepository extends JpaRepository<DateEvent, Integer> {
-	List<DateEvent> findAllByDate(String date);
+public interface DateEventRepository extends JpaRepository<Event, Integer> {
+	List<Event> findAllByDate(String date);
 }
