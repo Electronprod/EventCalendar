@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="icon.png">
+	<title>Календарь</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="/assets/calendar.css">
+
+	<head>
+
+	<body>
+		<div id="events-container"></div>
+		<div class="floating-button" onclick="openModal();">
+			<i class="fas fa-plus"></i>
+		</div>
+
+		<div class="overlay" id="overlay">
+			<div class="modal">
+				<h2>Введите данные</h2>
+				<div class="form-group">
+					<label for="date">Когда это произошло?</label>
+					<input type="date" id="date" required>
+				</div>
+				<div class="form-group">
+					<label for="title">Как называется событие?</label>
+					<input spellcheck="true" type="text" id="title" placeholder="Введите название" required>
+				</div>
+				<div class="form-group">
+					<label for="description">Опишите событие подробнее:</label>
+					<textarea required spellcheck="true" id="description" rows="4"
+						placeholder="Введите описание"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="signature">Кто вы?</label>
+					<input spellcheck="true" type="text" id="signature" placeholder="Иванов Иван" required>
+				</div>
+				<div class="modal-buttons">
+					<button class="submit-button" onclick="submitForm()">Отправить</button>
+					<button class="close-button" onclick="closeModal()">Закрыть</button>
+				</div>
+			</div>
+	</body>
+	<script src="https://momentjs.com/downloads/moment.min.js"></script>
+	<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+	<script src="/assets/calendar.js"></script>
+	<script src="/assets/sweetalert2.js"></script>
+	<script>
+		document.getElementById("date").valueAsDate = new Date();
+
+		function openModal() {
+			document.getElementById('overlay').style.display = 'flex';
+		}
+		function closeModal() {
+			document.getElementById('overlay').style.display = 'none';
+		}
+		function submitForm() {
+			const date = document.getElementById('date').value;
+			const title = document.getElementById('title').value;
+			const description = document.getElementById('description').value;
+			const signature = document.getElementById('signature').value;
+
+			if (!date || !title || !signature) {
+				alert('Пожалуйста, заполните обязательные поля: Дата, Заголовок, Подпись.');
+				return;
+			}
+
+			console.log('Дата:', date);
+			console.log('Заголовок:', title);
+			console.log('Описание:', description);
+			console.log('Подпись:', signature);
+			//TODO send data to server
+			alert('Форма успешно отправлена!');
+			closeModal();
+		}
+	</script>
+
+</html>
