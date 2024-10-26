@@ -1,56 +1,78 @@
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #f4f4f4;
-			padding: 20px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
+    body {
+    	font-family: 'Arial', sans-serif;
+    	background-color: #f4f4f9;
+    	color: #333;
+    	line-height: 1.6;
+    	margin: 0;
+    	padding: 0;
+    }
 
-		h1 {
-			margin-bottom: 20px;
-		}
+    .header {
+    	display: flex;
+    	align-items: center;
+    	background-color: black;
+    	padding: 20px;
+    	color: white;
+    }
 
-		.license {
-			border: 1px solid #ccc;
-			background-color: #fff;
-			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-			margin-bottom: 20px;
-			padding: 20px;
-			max-width: 600px;
-			width: 100%;
-		}
+    .header .logo {
+    	width: 50px;
+    	height: 50px;
+    	margin-right: 10px;
+    }
 
-		.license h2 {
-			margin-top: 0;
-		}
+    .header .title {
+    	flex: 1;
+    	margin: 0;
+    	font-size: 24px;
+    }
 
-		.license p {
-			margin-top: 5px;
-		}
+    .header .license-link {
+    	color: white;
+    	text-decoration: none;
+    	font-size: 16px;
+    }
 
-		.header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 20px;
-			width: 100%;
-			box-sizing: border-box;
-		}
+    .header .license-link:hover {
+    	text-decoration: underline;
+    }
 
-		.title {
-			flex-grow: 1;
-			text-align: center;
-		}
+    .license {
+    	background-color: white;
+    	margin: 20px;
+    	padding: 20px;
+    	border-radius: 5px;
+    	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-		.license-link {
-			padding: 10px 20px;
-			background-color: #007bff;
-			color: #fff;
-			text-decoration: none;
-			border-radius: 5px;
-		}
+    .license h2 {
+    	margin-top: 0;
+    	color: black;
+    }
 
-		.logo {
-			max-width: 100px;
-		}
+    .license h3 {
+    	margin: 10px 0;
+    	color: #777;
+    }
+
+    .license pre {
+    	background-color: #f4f4f9;
+    	padding: 15px;
+    	border-radius: 5px;
+    	overflow-x: auto;
+    	white-space: pre-wrap;
+    	word-wrap: break-word;
+    }
+
+    .license p {
+    	margin: 10px 0;
+    }
+
+    .license a {
+    	color: #4CAF50;
+    	text-decoration: none;
+    }
+
+    .license a:hover {
+    	text-decoration: underline;
+    }

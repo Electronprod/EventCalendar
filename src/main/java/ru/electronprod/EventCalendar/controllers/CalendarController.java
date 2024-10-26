@@ -27,6 +27,11 @@ public class CalendarController {
 		return "index";
 	}
 
+	@GetMapping("/license")
+	public String license() {
+		return "license";
+	}
+
 	@SuppressWarnings("unchecked")
 	@PostMapping("/api/addevent")
 	public ResponseEntity<String> createEvent(@RequestBody Event event) {
