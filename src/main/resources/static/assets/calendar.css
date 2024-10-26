@@ -43,6 +43,34 @@
  	border-right: 4px solid #ff9800;
  }
 
+ /* Контейнер для кнопок */
+ .button-container {
+ 	display: grid;
+ 	justify-content: center;
+ }
+
+ .verify-btn {
+ 	background-color: green;
+ 	color: #fff;
+ 	text-align: center;
+ 	width: 100px;
+ }
+
+ .deny-btn {
+ 	background-color: red;
+ 	color: #fff;
+ 	text-align: center;
+ 	width: 100px;
+ }
+
+ .verify-btn:hover {
+ 	background-color: limegreen;
+ }
+
+ .deny-btn:hover {
+ 	background-color: orangered;
+ }
+
  .event-date .day {
  	font-size: 28px;
  	font-weight: bold;
@@ -82,6 +110,7 @@
  	font-size: 16px;
  	line-height: 1.8;
  	color: #555;
+ 	max-width: 400px;
  }
 
  /* Выделение предстоящего события */
@@ -109,6 +138,72 @@
  }
 
  .floating-button:hover {
+ 	background-color: #e68900;
+ }
+
+ .floating-button-2 {
+ 	position: fixed;
+ 	bottom: 100px;
+ 	right: 20px;
+ 	width: 60px;
+ 	height: 60px;
+ 	background-color: #ff9800;
+ 	color: #fff;
+ 	border-radius: 50%;
+ 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	font-size: 24px;
+ 	transition: background-color 0.3s ease;
+ 	cursor: pointer;
+ }
+
+ .floating-button-2:hover {
+ 	background-color: #e68900;
+ }
+
+ .floating-button-3 {
+ 	position: fixed;
+ 	bottom: 180px;
+ 	right: 20px;
+ 	width: 60px;
+ 	height: 60px;
+ 	background-color: #ff9800;
+ 	color: #fff;
+ 	border-radius: 50%;
+ 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	font-size: 24px;
+ 	transition: background-color 0.3s ease;
+ 	cursor: pointer;
+ }
+
+ .floating-button-3:hover {
+ 	background-color: #e68900;
+ }
+
+ .floating-button-4 {
+ 	position: fixed;
+ 	bottom: 260px;
+ 	right: 20px;
+ 	width: 60px;
+ 	height: 60px;
+ 	background-color: #ff9800;
+ 	color: #fff;
+ 	border-radius: 50%;
+ 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	font-size: 24px;
+ 	transition: background-color 0.3s ease;
+ 	cursor: pointer;
+ }
+
+ .floating-button-4:hover {
  	background-color: #e68900;
  }
 
@@ -185,8 +280,11 @@
  	color: white;
  }
 
- label,
- h2 {
+ label {
  	color:
  		black;
+ }
+
+ h2 {
+ 	text-align: center;
  }

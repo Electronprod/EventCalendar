@@ -1,5 +1,6 @@
 package ru.electronprod.EventCalendar.security;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,10 +8,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.electronprod.EventCalendar.models.User;
 import ru.electronprod.EventCalendar.repositories.UserRepository;
+
 @Service
-public class AuthHelper {
+@Slf4j
+public class AuthHelper implements InitializingBean {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -33,9 +37,9 @@ public class AuthHelper {
 	 * @param person
 	 */
 	@Transactional
-	public void register(User person) {
+	public boolean register(User person) {
 		person.setPassword(passwordEncoder.encode(person.getPassword()));
-		userRepository.save(person);
+		return userRepository.save(person) != null;
 	}
 
 	/**
@@ -47,5 +51,20 @@ public class AuthHelper {
 	@Transactional(readOnly = true)
 	public boolean exists(String login) {
 		return userRepository.findByLogin(login).isPresent();
+	}
+
+	/**
+	 * Automatically registers admin, if database is empty
+	 */
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		if (!userRepository.findAll().isEmpty())
+			return;
+		User user = new User();
+		user.setLogin("electron");
+		user.setPassword("e");
+		user.setRole("ROLE_ADMIN");
+		register(user);
+		log.info("Administrator registered because the database is empty. Login: " + user.getLogin());
 	}
 }
