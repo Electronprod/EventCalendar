@@ -4,11 +4,14 @@ import ru.electronprod.EventCalendar.models.*;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DateEventRepository extends JpaRepository<Event, Integer> {
+public interface EventRepository extends JpaRepository<Event, Integer> {
 	List<Event> findAllByDate(String date);
+
+	List<Event> findAllByVerified(boolean verified, Sort sort);
 }

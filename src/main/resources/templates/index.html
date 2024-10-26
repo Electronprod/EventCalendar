@@ -7,11 +7,20 @@
 	<title>Календарь</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="stylesheet" href="/assets/calendar.css">
+	<style>
+		.button-container {
+			display: none;
+		}
+	</style>
 
 	<head>
 
 	<body>
-		<div id="events-container"></div>
+		<!--CSRF Attack Protection (Getting from thymeleaf for JS)-->
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<div id="events-container">
+			<h2>Календарь событий</h2>
+		</div>
 		<div class="floating-button" onclick="openModal();">
 			<i class="fas fa-plus"></i>
 		</div>
@@ -29,8 +38,8 @@
 				</div>
 				<div class="form-group">
 					<label for="description">Опишите событие подробнее:</label>
-					<textarea required spellcheck="true" id="description" rows="4"
-						placeholder="Введите описание"></textarea>
+					<textarea wrap="hard" required spellcheck="true" id="description" rows="2" maxlength="100"
+						placeholder="Не больше 100 букв."></textarea>
 				</div>
 				<div class="form-group">
 					<label for="signature">Кто вы?</label>
@@ -44,8 +53,8 @@
 	</body>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
-	<script src="/assets/calendar.js"></script>
 	<script src="/assets/sweetalert2.js"></script>
+	<script src="/assets/calendar.js"></script>
 	<script>
 		document.getElementById("date").valueAsDate = new Date();
 
@@ -65,15 +74,57 @@
 				alert('Пожалуйста, заполните обязательные поля: Дата, Заголовок, Подпись.');
 				return;
 			}
-
-			console.log('Дата:', date);
-			console.log('Заголовок:', title);
-			console.log('Описание:', description);
-			console.log('Подпись:', signature);
-			//TODO send data to server
-			alert('Форма успешно отправлена!');
+			const data = {
+				date: date,
+				title: title,
+				content: description,
+				author: signature
+			};
+			console.log(data);
+			sendData("/api/addevent", data);
+			document.getElementById("date").valueAsDate = new Date();
+			document.getElementById('title').value="";
+			document.getElementById('description').value="";
+			document.getElementById('signature').value="";
 			closeModal();
 		}
+		const sendData = async (url, data) => {
+			var csrfToken = document.querySelector('input[name="_csrf"]').value;
+			// Опции для fetch запроса
+			const options = {
+				method: 'POST',
+				headers: {
+					'X-CSRF-TOKEN': csrfToken,
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			};
+			try {
+				const response = await fetch(url, options);
+				if (!response.ok) {
+					Swal.fire({
+						title: "Ошибка!",
+						text: "Ошибка обращения к серверу. \n HTTP: " + response.status,
+						icon: "error"
+					});
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				const responseData = await response.json();
+				console.log('Response:', responseData);
+				Swal.fire({
+					title: "Готово!",
+					text: "В ближайшее время ваше событие появится здесь.",
+					icon: "success"
+				});
+			} catch (error) {
+				console.error('Error:', error);
+				Swal.fire({
+					title: "Ошибка!",
+					text: "Что-то пошло не так! \n Сообщение: " + error,
+					icon: "error"
+				});
+			}
+		};
 	</script>
 
 </html>
