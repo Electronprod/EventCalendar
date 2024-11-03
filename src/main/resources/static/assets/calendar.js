@@ -5,7 +5,12 @@ async function main() {
 		verstate = false;
 	}
 	const eventsData = await fetchData("/api/getevents?verified=" + !verstate);
-
+	// Сортировка событий по месяцу
+	eventsData.sort((a, b) => {
+		const monthA = moment(a.date, "YYYY.MM.DD").month();
+		const monthB = moment(b.date, "YYYY.MM.DD").month();
+		return monthA - monthB;
+	});
 	function renderEvents(events) {
 		const container = document.getElementById("events-container");
 		let upcomingEventFound = false;
@@ -22,7 +27,6 @@ async function main() {
           <div class="event-details" name="${event.id}">
               <h3 class="event-title">${event.title}</h3>
               <div class="event-meta">
-                  <i class="fa fa-calendar"></i> ${date.format('dddd')} <br>
                   <i class="fa fa-signature"></i> ${event.author}
               </div>
               <div class="event-content">
@@ -30,14 +34,13 @@ async function main() {
               </div>
           </div>
           <div class="button-container" name="${event.id}">
-          	<button class="verify-btn" onclick="verify(${event.id})">Утвердить</button>
-          	<button class="deny-btn" onclick="deny(${event.id})">Удалить</button>
+            <button class="verify-btn" onclick="verify(${event.id})">Утвердить</button>
+            <button class="deny-btn" onclick="deny(${event.id})">Удалить</button>
           </div>
         `;
-			// Если событие еще не прошло, выделим его
 			if (date.isSameOrAfter(moment()) && !upcomingEventFound) {
 				eventElement.classList.add("upcoming-event");
-				upcomingEventFound = eventElement; // Сохраняем ссылку на предстоящее событие
+				upcomingEventFound = eventElement;
 			}
 			container.appendChild(eventElement);
 		});
@@ -47,14 +50,12 @@ async function main() {
 				button.remove();
 			});
 		}
-		// Прокручиваем к предстоящему событию
 		if (upcomingEventFound) {
 			upcomingEventFound.scrollIntoView({ behavior: "smooth", block: "start" });
 		}
 	}
 	renderEvents(eventsData);
 }
-
 window.onload = main;
 
 async function fetchData(url) {
