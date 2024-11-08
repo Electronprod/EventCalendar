@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>ru.electronprod</groupId>
 	<artifactId>EventCalendar</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>EventCalendar</name>
 	<description>Fillable event calendar</description>
 	<url />
