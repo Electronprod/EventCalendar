@@ -56,6 +56,13 @@
  	width: 100px;
  }
 
+ .edit-btn {
+ 	background-color: blue;
+ 	color: #fff;
+ 	text-align: center;
+ 	width: 100px;
+ }
+
  .deny-btn {
  	background-color: red;
  	color: #fff;
@@ -65,6 +72,10 @@
 
  .verify-btn:hover {
  	background-color: limegreen;
+ }
+
+ .edit-btn:hover {
+ 	background-color: darkblue;
  }
 
  .deny-btn:hover {
