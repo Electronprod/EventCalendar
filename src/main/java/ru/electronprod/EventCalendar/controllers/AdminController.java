@@ -102,4 +102,20 @@ public class AdminController {
 		}
 		return ResponseEntity.internalServerError().body(answer.toJSONString());
 	}
+
+	@SuppressWarnings("unchecked")
+	@GetMapping("/admin/getevent")
+	public ResponseEntity<String> getEvents(@RequestParam int id) {
+		Optional<Event> event1 = database.findById(id);
+		if (event1.isEmpty())
+			return ResponseEntity.badRequest().body("[]");
+		Event event = event1.get();
+		JSONObject JSEvent = new JSONObject();
+		JSEvent.put("id", event.getId());
+		JSEvent.put("date", event.getDate());
+		JSEvent.put("title", event.getTitle());
+		JSEvent.put("content", event.getContent());
+		JSEvent.put("author", event.getAuthor());
+		return ResponseEntity.ok(JSEvent.toJSONString());
+	}
 }

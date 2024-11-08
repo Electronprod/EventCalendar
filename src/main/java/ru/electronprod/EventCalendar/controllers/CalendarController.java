@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import ru.electronprod.EventCalendar.security.AuthHelper;
 import ru.electronprod.EventCalendar.models.Event;
 import ru.electronprod.EventCalendar.repositories.EventRepository;
 
@@ -21,6 +21,8 @@ import ru.electronprod.EventCalendar.repositories.EventRepository;
 public class CalendarController {
 	@Autowired
 	private EventRepository database;
+	@Autowired
+	private AuthHelper auth;
 
 	@GetMapping("/")
 	public String calendar() {
@@ -35,6 +37,9 @@ public class CalendarController {
 	@SuppressWarnings("unchecked")
 	@PostMapping("/api/addevent")
 	public ResponseEntity<String> createEvent(@RequestBody Event event) {
+		if (event.getId() != 0 && !auth.getCurrentUser().getRole().equals("ROLE_ADMIN")) {
+			return ResponseEntity.status(403).body("[]");
+		}
 		event.setVerified(false);
 		event.setDate(event.getDate().replaceAll("-", "."));
 		boolean result = database.save(event) != null;

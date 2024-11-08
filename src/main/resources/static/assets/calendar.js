@@ -5,15 +5,18 @@ async function main() {
 		verstate = false;
 	}
 	const eventsData = await fetchData("/api/getevents?verified=" + !verstate);
-	// Сортировка событий по месяцу
 	eventsData.sort((a, b) => {
-		const monthA = moment(a.date, "YYYY.MM.DD").month();
-		const monthB = moment(b.date, "YYYY.MM.DD").month();
-		return monthA - monthB;
+		const dateA = moment(a.date, "YYYY.MM.DD");
+		const dateB = moment(b.date, "YYYY.MM.DD");
+		const monthDifference = dateA.month() - dateB.month();
+		if (monthDifference !== 0) {
+			return monthDifference;
+		}
+		return dateA.date() - dateB.date();
 	});
+
 	function renderEvents(events) {
 		const container = document.getElementById("events-container");
-		let upcomingEventFound = false;
 		events.forEach(event => {
 			const date = moment(event.date, "YYYY.MM.DD");
 			const eventElement = document.createElement("div");
@@ -35,13 +38,10 @@ async function main() {
           </div>
           <div class="button-container" name="${event.id}">
             <button class="verify-btn" onclick="verify(${event.id})">Утвердить</button>
+            <button class="edit-btn" onclick="edit(${event.id})">Редактировать</button>
             <button class="deny-btn" onclick="deny(${event.id})">Удалить</button>
           </div>
         `;
-			if (date.isSameOrAfter(moment()) && !upcomingEventFound) {
-				eventElement.classList.add("upcoming-event");
-				upcomingEventFound = eventElement;
-			}
 			container.appendChild(eventElement);
 		});
 		if (window.location.href.toLowerCase().includes("show_verified")) {
@@ -50,12 +50,10 @@ async function main() {
 				button.remove();
 			});
 		}
-		if (upcomingEventFound) {
-			upcomingEventFound.scrollIntoView({ behavior: "smooth", block: "start" });
-		}
 	}
 	renderEvents(eventsData);
 }
+
 window.onload = main;
 
 async function fetchData(url) {

@@ -271,7 +271,7 @@
 	<script src="/assets/sweetalert2.js"></script>
 	<script>
 		async function deleteUser(id) {
-			if (sendData("/admin/delete_user?id=" + id)) {
+			if (await sendData("/admin/delete_user?id=" + id)) {
 				var divsToDelete = document.querySelectorAll('tr[name="' + id + '"]');
 				divsToDelete.forEach(function (div) {
 					div.remove();
