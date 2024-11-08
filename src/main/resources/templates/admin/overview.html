@@ -28,6 +28,32 @@
 		<div class="floating-button-4" onclick="window.location.href='/admin/usermgr';">
 			<i class="fas fa-users"></i>
 		</div>
+		<div class="overlay" id="overlay">
+			<div class="modal">
+				<h2>Редактирование</h2>
+				<input type="hidden" id="id" required>
+				<div class="form-group">
+					<label for="date">Когда это произошло?</label>
+					<input type="date" id="date" required>
+				</div>
+				<div class="form-group">
+					<label for="title">Как называется событие?</label>
+					<input spellcheck="true" type="text" id="title" placeholder="Введите название" required>
+				</div>
+				<div class="form-group">
+					<label for="description">Опишите событие подробнее:</label>
+					<textarea wrap="hard" required spellcheck="true" id="description" rows="2" maxlength="100"
+						placeholder="Не больше 100 букв."></textarea>
+				</div>
+				<div class="form-group">
+					<label for="signature">Кто вы?</label>
+					<input spellcheck="true" type="text" id="signature" placeholder="Иванов Иван" required>
+				</div>
+				<div class="modal-buttons">
+					<button class="submit-button" onclick="submitForm()">Отправить</button>
+					<button class="close-button" onclick="closeModal()">Закрыть</button>
+				</div>
+			</div>
 	</body>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
