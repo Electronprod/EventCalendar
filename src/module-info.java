@@ -1,0 +1,8 @@
+/**
+ ***REMOVED***
+ */
+/**
+ ***REMOVED***
+ */
+module EventCalendar {
+}
