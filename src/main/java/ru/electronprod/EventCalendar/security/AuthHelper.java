@@ -8,13 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.extern.slf4j.Slf4j;
 import ru.electronprod.EventCalendar.models.User;
 import ru.electronprod.EventCalendar.repositories.UserRepository;
 
 @Service
-@Slf4j
 public class AuthHelper implements InitializingBean {
+	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AuthHelper.class);
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired

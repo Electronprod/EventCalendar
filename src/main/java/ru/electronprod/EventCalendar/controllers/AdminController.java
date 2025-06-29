@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import ru.electronprod.EventCalendar.models.Event;
 import ru.electronprod.EventCalendar.models.User;
 import ru.electronprod.EventCalendar.repositories.EventRepository;
@@ -105,7 +104,7 @@ public class AdminController {
 
 	@SuppressWarnings("unchecked")
 	@GetMapping("/admin/getevent")
-	public ResponseEntity<String> getEvents(@RequestParam int id) {
+	public ResponseEntity<String> getEvent(@RequestParam int id) {
 		Optional<Event> event1 = database.findById(id);
 		if (event1.isEmpty())
 			return ResponseEntity.badRequest().body("[]");
