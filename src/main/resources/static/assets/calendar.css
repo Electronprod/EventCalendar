@@ -1,301 +1,316 @@
- body {
- 	font-size: 100%;
- 	line-height: 1.6;
- 	font-family: 'Roboto', sans-serif;
- 	background: linear-gradient(180deg, #1c1c3c, #2a2a4b);
- 	color: #fff;
- 	margin: 0;
- 	padding: 20px;
- }
+body {
+	font-size: 100%;
+	line-height: 1.6;
+	font-family: 'Roboto', sans-serif;
+	background: linear-gradient(180deg, #1c1c3c, #2a2a4b);
+	color: #fff;
+	margin: 0;
+	padding: 20px;
+}
 
- #events-container {
- 	max-width: 700px;
- 	margin: 30px auto;
- 	padding: 20px;
- 	background: rgba(255, 255, 255, 0.1);
- 	border-radius: 12px;
- 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
- }
+#events-container {
+	max-width: 700px;
+	margin: 30px auto;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
- .event {
- 	display: flex;
- 	background-color: #ffffff;
- 	border-radius: 8px;
- 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
- 	margin-bottom: 15px;
- 	overflow: hidden;
- 	transition: transform 0.3s ease;
- }
+.event {
+	display: flex;
+	background-color: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 15px;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+}
 
- .event:hover {
- 	transform: translateY(-5px);
- }
+.event:hover {
+	transform: translateY(-5px);
+}
 
- .event-date {
- 	background-color: #4a4a6b;
- 	color: #fff;
- 	padding: 20px;
- 	text-align: center;
- 	width: 100px;
- 	display: flex;
- 	flex-direction: column;
- 	justify-content: center;
- 	border-right: 4px solid #ff9800;
- }
+.event-date {
+	background-color: #4a4a6b;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-right: 4px solid #ff9800;
+}
 
- /* Контейнер для кнопок */
- .button-container {
- 	display: grid;
- 	justify-content: center;
- }
+/* Контейнер для кнопок */
+.button-container {
+	display: grid;
+	justify-content: center;
+}
 
- .verify-btn {
- 	background-color: green;
- 	color: #fff;
- 	text-align: center;
- 	width: 100px;
- }
+.verify-btn {
+	background-color: green;
+	color: #fff;
+	text-align: center;
+	width: 100px;
+}
 
- .edit-btn {
- 	background-color: blue;
- 	color: #fff;
- 	text-align: center;
- 	width: 100px;
- }
+.edit-btn {
+	background-color: blue;
+	color: #fff;
+	text-align: center;
+	width: 100px;
+}
 
- .deny-btn {
- 	background-color: red;
- 	color: #fff;
- 	text-align: center;
- 	width: 100px;
- }
+.deny-btn {
+	background-color: red;
+	color: #fff;
+	text-align: center;
+	width: 100px;
+}
 
- .verify-btn:hover {
- 	background-color: limegreen;
- }
+.verify-btn:hover {
+	background-color: limegreen;
+}
 
- .edit-btn:hover {
- 	background-color: darkblue;
- }
+.edit-btn:hover {
+	background-color: darkblue;
+}
 
- .deny-btn:hover {
- 	background-color: orangered;
- }
+.deny-btn:hover {
+	background-color: orangered;
+}
 
- .event-date .day {
- 	font-size: 28px;
- 	font-weight: bold;
- }
+.event-date .day {
+	font-size: 28px;
+	font-weight: bold;
+}
 
- .event-date .month {
- 	text-transform: uppercase;
- 	font-size: 18px;
- 	margin-top: 5px;
- }
+.event-date .month {
+	text-transform: uppercase;
+	font-size: 18px;
+	margin-top: 5px;
+}
 
- .event-details {
- 	flex: 1;
- 	padding: 20px;
- 	background-color: #f5f6fa;
- }
+.event-details {
+	flex: 1;
+	padding: 20px;
+	background-color: #f5f6fa;
+}
 
- .event-title {
- 	font-weight: bold;
- 	font-size: 20px;
- 	margin: 0;
- 	line-height: 1.4;
- 	color: #333;
- }
+.event-title {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0;
+	line-height: 1.4;
+	color: #333;
+}
 
- .event-meta {
- 	font-size: 15px;
- 	color: #777;
- 	margin: 8px 0;
- }
+.event-meta {
+	font-size: 15px;
+	color: #777;
+	margin: 8px 0;
+}
 
- .event-meta i {
- 	margin-right: 10px;
- }
+.event-meta i {
+	margin-right: 10px;
+}
 
- .event-content {
- 	font-size: 16px;
- 	line-height: 1.8;
- 	color: #555;
- 	max-width: 400px;
- }
+.event-content {
+	font-size: 16px;
+	line-height: 1.8;
+	color: #555;
+	max-width: 400px;
+}
 
- /* Выделение предстоящего события */
- .upcoming-event {
- 	border: 2px solid #ff9900;
- 	background-color: #fffcf2;
- }
+/* Выделение предстоящего события */
+.upcoming-event {
+	border: 2px solid #ff9900;
+	background-color: #fffcf2;
+}
 
- .floating-button {
- 	position: fixed;
- 	bottom: 20px;
- 	right: 20px;
- 	width: 60px;
- 	height: 60px;
- 	background-color: #ff9800;
- 	color: #fff;
- 	border-radius: 50%;
- 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
- 	display: flex;
- 	justify-content: center;
- 	align-items: center;
- 	font-size: 24px;
- 	transition: background-color 0.3s ease;
- 	cursor: pointer;
- }
+.floating-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background-color: #ff9800;
+	color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
 
- .floating-button:hover {
- 	background-color: #e68900;
- }
+.floating-button:hover {
+	background-color: #e68900;
+}
 
- .floating-button-2 {
- 	position: fixed;
- 	bottom: 100px;
- 	right: 20px;
- 	width: 60px;
- 	height: 60px;
- 	background-color: #ff9800;
- 	color: #fff;
- 	border-radius: 50%;
- 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
- 	display: flex;
- 	justify-content: center;
- 	align-items: center;
- 	font-size: 24px;
- 	transition: background-color 0.3s ease;
- 	cursor: pointer;
- }
+.floating-button-2 {
+	position: fixed;
+	bottom: 100px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background-color: #ff9800;
+	color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
 
- .floating-button-2:hover {
- 	background-color: #e68900;
- }
+.floating-button-2:hover {
+	background-color: #e68900;
+}
 
- .floating-button-3 {
- 	position: fixed;
- 	bottom: 180px;
- 	right: 20px;
- 	width: 60px;
- 	height: 60px;
- 	background-color: #ff9800;
- 	color: #fff;
- 	border-radius: 50%;
- 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
- 	display: flex;
- 	justify-content: center;
- 	align-items: center;
- 	font-size: 24px;
- 	transition: background-color 0.3s ease;
- 	cursor: pointer;
- }
+.floating-button-3 {
+	position: fixed;
+	bottom: 180px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background-color: #ff9800;
+	color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
 
- .floating-button-3:hover {
- 	background-color: #e68900;
- }
+.floating-button-3:hover {
+	background-color: #e68900;
+}
 
- .floating-button-4 {
- 	position: fixed;
- 	bottom: 260px;
- 	right: 20px;
- 	width: 60px;
- 	height: 60px;
- 	background-color: #ff9800;
- 	color: #fff;
- 	border-radius: 50%;
- 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
- 	display: flex;
- 	justify-content: center;
- 	align-items: center;
- 	font-size: 24px;
- 	transition: background-color 0.3s ease;
- 	cursor: pointer;
- }
+.floating-button-4 {
+	position: fixed;
+	bottom: 260px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background-color: #ff9800;
+	color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
 
- .floating-button-4:hover {
- 	background-color: #e68900;
- }
+.floating-button-4:hover {
+	background-color: #e68900;
+}
 
- .overlay {
- 	position: fixed;
- 	top: 0;
- 	left: 0;
- 	width: 100%;
- 	height: 100%;
- 	background-color: rgba(0, 0, 0, 0.5);
- 	display: none;
- 	align-items: center;
- 	justify-content: center;
- 	z-index: 1000;
- }
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
 
- /* Стили для модальной формы */
- .modal {
- 	background-color: white;
- 	padding: 20px;
- 	border-radius: 8px;
- 	max-width: 400px;
- 	width: 90%;
- 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
- }
+/* Стили для модальной формы */
+.modal {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 400px;
+	width: 90%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
- .modal h2 {
- 	margin-top: 0;
- 	text-align: center;
- }
+.modal h2 {
+	margin-top: 0;
+	text-align: center;
+}
 
- .form-group {
- 	margin-bottom: 15px;
- }
+.form-group {
+	margin-bottom: 15px;
+}
 
- .form-group label {
- 	display: block;
- 	margin-bottom: 5px;
- }
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+}
 
- .form-group input,
- .form-group textarea {
- 	width: 100%;
- 	padding: 10px;
- 	border: 1px solid #ccc;
- 	border-radius: 4px;
- 	box-sizing: border-box;
- }
+.form-group input, .form-group textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
 
- .form-group textarea {
- 	resize: vertical;
- }
+.form-group textarea {
+	resize: vertical;
+}
 
- .modal-buttons {
- 	display: flex;
- 	justify-content: space-between;
- 	margin-top: 20px;
- }
+.modal-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
 
- .modal-buttons button {
- 	padding: 10px 15px;
- 	border: none;
- 	border-radius: 4px;
- 	cursor: pointer;
- }
+.modal-buttons button {
+	padding: 10px 15px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
 
- .modal-buttons .submit-button {
- 	background-color: #4CAF50;
- 	color: white;
- }
+.modal-buttons .submit-button {
+	background-color: #4CAF50;
+	color: white;
+}
 
- .modal-buttons .close-button {
- 	background-color: #f44336;
- 	color: white;
- }
+.modal-buttons .close-button {
+	background-color: #f44336;
+	color: white;
+}
 
- label {
- 	color:
- 		black;
- }
+.modal h2 {
+	color: black;
+}
 
- h2 {
- 	text-align: center;
- }
+label {
+	color: black;
+}
+
+h2 {
+	text-align: center;
+}
+
+@media ( max-width : 768px) {
+	.event-date {
+		padding: 0px;
+		width: 85px;
+	}
+	.event-date .day {
+		font-size: 15px;
+	}
+	.event-date .month {
+		font-size: 15px;
+	}
+}

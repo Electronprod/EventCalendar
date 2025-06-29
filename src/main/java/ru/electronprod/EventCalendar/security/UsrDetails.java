@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import ru.electronprod.EventCalendar.models.User;
 
+@SuppressWarnings("serial")
 public class UsrDetails implements UserDetails {
 	private final User person;
 

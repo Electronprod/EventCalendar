@@ -1,7 +1,6 @@
 package ru.electronprod.EventCalendar.controllers;
 
 import java.util.List;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +44,8 @@ public class CalendarController {
 		boolean result = database.save(event) != null;
 		JSONObject answer = new JSONObject();
 		answer.put("result", result);
-		if (result) {
+		if (result)
 			return ResponseEntity.ok(answer.toJSONString());
-		}
 		return ResponseEntity.internalServerError().body(answer.toJSONString());
 	}
 
